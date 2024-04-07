@@ -3,30 +3,26 @@ title: About
 seo:
   title: About Me
   description: Learn more about the person behind the website and embark on a journey of inspiration and shared experiences.
-  image:
-    src: '/about.jpeg'
-    alt: A person sitting at a desk in front of a computer
 ---
 
-![Alt text for image](/about.jpeg)
+## Eliott Wantz - Software Engineer based in Montreal, Canada
 
-**Note!:** This about page is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
-
-## Ethan Donovan - Web Developer based in Estonia
-
-**Greetings!** I'm Ethan Donovan, a passionate web developer residing in the picturesque landscapes of [Estonia](https://en.wikipedia.org/wiki/Estonia). With a keen eye for design and a love for crafting seamless digital experiences, I bring a unique blend of creativity and technical expertise to the world of web development.
+**Greetings!** I'm Eliott Wantz, a passionate software engineer. I mainly focus on full-stack development, and am always seeking new challenges to grow as a developer. With a strong understanding of modern applications requirements and complexity, I bring a unique blend of creativity and technical expertise, following best practices, to ship high-quality solutions.
 
 ## Skills and Expertise
 
-I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly websites. My proficiency includes **HTML**, **CSS**, **JavaScript**, and frameworks such as **Astro.js** for dynamic and interactive user interfaces. On the server side, I'm well-versed in Node.js and have experience with database management systems like MongoDB.
+I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly web applications and APIs.
 
-## Innovation and Problem-Solving
+For _web applications_, I mainly use SvelteKit and Nextjs for full-stack development. Technologies I use on a daily basis include:
+**Next.js**, **SvelteKit**, **Tailwind CSS**, **PostgreSQL**, **Drizzle**, **Oauth2**, **Stripe**, and more.
 
-I thrive on solving complex problems and transforming ideas into functional, elegant websites. Whether it's optimizing performance, implementing new features, or troubleshooting issues, I approach each challenge with enthusiasm and a commitment to delivering high-quality solutions.
+For backend javascript applications, I have used **Express** and **Nestjs**, but recently switched to [**Hono**](https://hono.dev/).
 
-## Global Perspective, Local Impact
+For more robust backend development, I use **Go** and recently used **Rust**. I have worked extensively with **Go**, creating **REST APIs** and integrating with databases such as **PostgreSQL** and **MongoDB**, but also game servers, or creating microservices for **Cloud Native applications**.
 
-Living in Estonia has not only influenced my appreciation for nature and culture but has also shaped my approach to web development. I understand the importance of creating digital solutions that resonate with local audiences while maintaining a global perspective.
+## Work Experience
+
+I have worked professionally as a software engineer intern at [Ribbon Communications](https://ribboncommunications.com/) in the cloud native team where I used Go, **Kubernetes** (Openshift) and **Docker**. I have also worked as a data engineer intern at [Kruger Inc.](https://www.kruger.com/) where I built business intelligence dashboards foor internal teams using PowerBi and Microsoft SQL Server.
 
 ## Continuous Learning
 
@@ -40,4 +36,4 @@ I believe in the power of collaboration and effective communication. Whether wor
 
 Are you looking to elevate your online presence or bring your digital ideas to life? I'd love to hear from you! Feel free to reach out for collaboration, consultation, or just a friendly chat about all things web development.
 
-_Let's build something amazing together!_
+<a href="/contact">_Get in touch_</a>

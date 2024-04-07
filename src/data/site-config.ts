@@ -42,8 +42,8 @@ const siteConfig: SiteConfig = {
     subtitle: 'Software Engineer',
     description: "Eliott Wantz's personal website.",
     image: {
-        src: '/dante-preview.jpg', // TODO: Replace with actual image
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
+        src: '/site-preview.jpg',
+        alt: 'Eliott Wantz Portfolio'
     },
     headerNavLinks: [
         {
@@ -51,8 +51,16 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
+            text: 'Work',
+            href: '/work'
+        },
+        {
             text: 'Projects',
             href: '/projects'
+        },
+        {
+            text: 'About',
+            href: '/about'
         }
         // {
         //     text: 'Blog',
@@ -64,10 +72,6 @@ const siteConfig: SiteConfig = {
         // }
     ],
     footerNavLinks: [
-        {
-            text: 'About',
-            href: '/about'
-        },
         {
             text: 'Contact',
             href: '/contact'
