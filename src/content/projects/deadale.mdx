@@ -1,0 +1,66 @@
+---
+title: 'Deadale'
+description: Deadale was an app that let users generate multiple version of their advertisments, by translating a video into multiple languages with different accents and voices.
+publishDate: 'June 12 2023'
+isFeatured: true
+seo:
+  image:
+    src: '/deadale/1.jpg'
+    alt: Project preview
+---
+
+import Carousel from '@/components/Carousel.svelte';
+
+<div class="flex justify-center mb-10">
+  <Carousel
+    client:load
+    images={[
+      { src: '/deadale/1.png', alt: 'Landing page of the NEM website' },
+      { src: '/deadale/2.png', alt: 'Video upload process' },
+      { src: '/deadale/3.png', alt: 'Voice and accent selection' },
+      { src: '/deadale/4.png', alt: 'Results page' }
+    ]}
+  />
+</div>
+
+**Project Overview:**
+Deadale is a startup co-founded by my friends and I. We wanted to create an app that lets users expend their atvertising reach by generating multiple version of their advertisments in different languages and accents. We launch the app two weeks after the idea and gathered feedback from our users. We then improved the app and launched on Product Hunt, with an easy 1000 users in the first week.
+
+## Objectives
+
+1. Develop an app to make one marketing video accessible in multiple languages.
+2. Help users reach a global audience.
+3. Adjust the voice and accent of the video, for a localized target audience.
+
+## Features
+
+1. **Translation**
+
+- Select languages in which the audio of the video should be translated.
+- Get multiple copies of the video with the translated audio within minutes.
+
+2. **Audio tweaks**
+
+- Select the voice and accent to use in the video.
+- Fine tune based on the target audience.
+
+3. **Manage videos**
+
+- Export the newly created videos from the dashboard.
+- View recently created videos in the dashboard and modify them if needed.
+
+## Architecture
+
+Deadale is built with Nextjs for the web application. The web app talks to the Go backend, used for processing video and audio transformation. The Go backend uses OpenAI translate the audio transcription, and ElevenLabs to transcript the audio and apply audio transformations with the voice and accent selected by the user. It is all hosted on [Railway](https://railway.app/) for seamless deployments, with continuous deployments.
+
+## Technology Stack
+
+- Web app: Nextjs, Tailwind CSS
+- Backend: Go
+- Database: PostgreSQL
+- Payments: Stripe payments
+
+## Outcome
+
+- Deadale was a fun project, and I learned a lot along the way. We built incredibly fast and got user feedback quite fast, where we could improve the app rapidly.
+- It was my first project using AI tools, which made me learn how to use them effectively together.
