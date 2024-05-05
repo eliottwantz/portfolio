@@ -1,6 +1,6 @@
 export type Image = {
     src: string;
-    alt?: string;
+    alt: string;
     caption?: string;
 };
 
@@ -12,7 +12,6 @@ export type Link = {
 export type Hero = {
     title: string;
     text: string;
-    image: Image;
     actions: Link[];
 };
 
@@ -31,6 +30,9 @@ export type SiteConfig = {
     headerNavLinks?: Link[];
     footerNavLinks?: Link[];
     socialLinks?: Link[];
+    header: {
+        image: Image;
+    };
     hero: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
@@ -42,7 +44,7 @@ const siteConfig: SiteConfig = {
     subtitle: 'Software Engineer',
     description: "Eliott Wantz's personal website.",
     image: {
-        src: '/site-preview.jpg',
+        src: '/site-prev.png',
         alt: 'Eliott Wantz Portfolio'
     },
     headerNavLinks: [
@@ -90,19 +92,18 @@ const siteConfig: SiteConfig = {
             text: 'Linkedin',
             href: 'https://www.linkedin.com/in/eliott-sw/'
         }
-        // {
-        //     text: 'X/Twitter',
-        //     href: 'https://twitter.com/'
-        // }
     ],
+    header: {
+        image: {
+            src: '/pp.jpg',
+            alt: 'Eliott Wantz',
+            caption: 'Photo by Eliott Wantz'
+        }
+    },
     hero: {
         title: 'Welcome to my website!',
         text: "I'm **Eliott Wantz**, a software engineer, who loves to build amazing things. I'm always looking for new and exciting projects to work on. Whenever I have a new idea, I immediately start working on it. I am precise, organized, and adaptable. I have vast experience in both front and back-end development. My approach involves creating solutions that are both efficient and user-friendly. In a team environment, I like to listen to others' ideas and give my personal opinion to challenge the different points of views. I take ownership and responsibility.\n\nI'm always looking for new and exciting projects to work on. If you are interested in working with me or you'd like to know more about me, feel free to contact me.",
-        image: {
-            src: '/photo.jpg',
-            alt: 'A selfie of Eliott Wantz',
-            caption: 'Photo by Eliott Wantz'
-        },
+
         actions: [
             {
                 text: 'Get in Touch',
