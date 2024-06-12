@@ -27,7 +27,7 @@
             name="search"
             bind:value={searchTerm}
             on:input={filterTags}
-            class="block w-full px-4 py-2 rounded-md border border-gray-300 text-sm focus:outline-gray-500 focus:outline-2 focus:border-gray-300"
+            class="block w-full px-4 py-2 rounded-md border border-gray-300 text-sm focus:outline-gray-500 focus:outline-2 focus:border-gray-300 dark:text-neutral-900"
             placeholder="Search tags..."
         />
         <div class="absolute text-gray-300 right-2">
