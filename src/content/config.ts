@@ -1,3 +1,4 @@
+import { allTags } from '@/data/tags';
 import { defineCollection, z } from 'astro:content';
 
 const seoSchema = z.object({
@@ -34,10 +35,11 @@ const pages = defineCollection({
 const projects = defineCollection({
     schema: z.object({
         title: z.string(),
-        description: z.string().optional(),
+        description: z.string(),
         publishDate: z.coerce.date(),
         isFeatured: z.boolean().default(false),
-        seo: seoSchema.optional()
+        tags: z.array(z.enum(allTags)),
+        seo: seoSchema
     })
 });
 

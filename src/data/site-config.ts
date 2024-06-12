@@ -63,15 +63,15 @@ const siteConfig: SiteConfig = {
         {
             text: 'About',
             href: '/about'
-        }
+        },
         // {
         //     text: 'Blog',
         //     href: '/blog'
         // },
-        // {
-        //     text: 'Tags',
-        //     href: '/tags'
-        // }
+        {
+            text: 'Tags',
+            href: '/tags'
+        }
     ],
     footerNavLinks: [
         {

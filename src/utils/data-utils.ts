@@ -1,12 +1,12 @@
 import { type CollectionEntry } from 'astro:content';
 import { slugify } from './common-utils';
 
-export function sortItemsByDateDesc(itemA: CollectionEntry<'blog' | 'projects'>, itemB: CollectionEntry<'blog' | 'projects'>) {
+export function sortItemsByDateDesc(itemA: CollectionEntry<'projects'>, itemB: CollectionEntry<'projects'>) {
     return new Date(itemB.data.publishDate).getTime() - new Date(itemA.data.publishDate).getTime();
 }
 
-export function getAllTags(posts: CollectionEntry<'blog'>[]) {
-    const tags: string[] = [...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean))];
+export function getAllTags(posts: CollectionEntry<'projects'>[]) {
+    const tags = [...new Set(posts.flatMap((post) => post.data.tags || []).filter(Boolean))];
     return tags
         .map((tag) => {
             return {
@@ -19,7 +19,7 @@ export function getAllTags(posts: CollectionEntry<'blog'>[]) {
         });
 }
 
-export function getPostsByTag(posts: CollectionEntry<'blog'>[], tagSlug: string) {
+export function getPostsByTag(posts: CollectionEntry<'projects'>[], tagSlug: string) {
     const filteredPosts: CollectionEntry<'blog'>[] = posts.filter((post) => (post.data.tags || []).map((tag) => slugify(tag)).includes(tagSlug));
     return filteredPosts;
 }
