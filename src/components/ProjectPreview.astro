@@ -16,7 +16,7 @@ const TitleTag = headingLevel;
         >
             {title}
         </TitleTag>
-        <div class="flex gap-x-2 mb-2">
+        <div class="flex gap-x-2 mb-2 flex-wrap">
             {tags.map((tag) => <span class="text-sm font-serif italic">{tag}</span>)}
         </div>
         {description && <div class="mt-1 text-sm leading-normal">{description}</div>}

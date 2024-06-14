@@ -10,7 +10,9 @@ export const allTags = [
     'Go',
     'OpenAI',
     'ElevenLabs',
-    'Prisma'
+    'Prisma',
+    'Turso',
+    'TypeScript'
 ] as const;
 export type Tag = (typeof allTags)[number];
 

@@ -110,7 +110,7 @@ module.exports = {
                             lineHeight: 1.4,
                             paddingLeft: 0,
                             '@media (min-width: theme("screens.sm"))': {
-                                fontSize: '1.66667em',
+                                fontSize: '1.56667em',
                                 lineHeight: 1.3
                             }
                         }
