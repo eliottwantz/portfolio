@@ -44,7 +44,7 @@ const siteConfig: SiteConfig = {
     subtitle: 'Software Engineer',
     description: "Eliott Wantz's personal website.",
     image: {
-        src: '/site-prev.png',
+        src: '/site-preview.png',
         alt: 'Eliott Wantz Portfolio'
     },
     headerNavLinks: [
