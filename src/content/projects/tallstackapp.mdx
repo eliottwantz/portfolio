@@ -1,6 +1,6 @@
 ---
 title: 'TALL Stack Laravel Bootcamp'
-description: The TALL Stack stands for 'Tailwindcss', 'Alpine.js', 'Laravel' and 'Livewire', a full-stack development solution, built by Laravel community members. This is my exploration of this stack.
+description: The TALL Stack stands for 'Tailwindcss', 'Alpine.js', 'Laravel', and 'Livewire', a full-stack development solution, built by Laravel community members. This is my exploration of this stack.
 publishDate: 'June 12 2024'
 isFeatured: true
 tags: ['Laravel', 'Livewire', 'Tailwindcss', 'Alpine.js']
@@ -41,22 +41,22 @@ This is a full-stack app made with the [Tall Stack](https://tallstack.dev/). It 
 
 2. **Posts page**
 
-- The main part of the app if allowing users to view and create posts. THe posts page list all posts created in descending order of creation. Using Livewire pagination, it shows 10 posts per page, and displays a paginator at the bottom. Leveraging Alpine.js, at scroll to top button is available.
+- The main part of the app is allowing users to view and create posts. The posts page lists all posts created in descending order of creation. Using Livewire pagination, it shows 10 posts per page and displays a paginator at the bottom. Leveraging Alpine.js, a scroll to the top button is available.
 - User can modify their post by clicking on the edit button, and delete posts by clicking on the delete button. These actions are protected by Laravel Policies, allowing only authors to perform these actions.
 
 3. **Email notifications**
 
-- When a post is created, a `PostCreated` event is created emited.
+- When a post is created, a `PostCreated` event is created and emitted.
 
 - When a `PostCreated` event is received, a queue job notification is created
 
-- Queue workers in the app listen to this notification and an email is sent to the email address of all the users of the app but the author. It uses a SMTP server with [Mailpit](https://mailpit.axllent.org/) for local testing.
+- Queue workers in the app listen to this notification and an email is sent to the email address of all the users of the app but the author. It uses an SMTP server with [Mailpit](https://mailpit.axllent.org/) for local testing.
 
 - Using queues, the email is sent asynchronously and is not blocking the rest of the app. It also allows to recover from failures in the queue workers.
 
 ## Architecture
 
-The app is built with Laravel, Livewire, Tailwindcss and Alpine.js (TALL Stack). It uses [Laravel Queues](https://laravel.com/docs/11.x/queues) to send email notifications in the background. It uses Sqlite as the database paired with the powerfull [Eloquen ORM](https://laravel.com/docs/11.x/eloquent) to interact query, migrate and seed the database using [Factories](https://laravel.com/docs/11.x/eloquent-factories).
+The app is built with Laravel, Livewire, Tailwindcss, and Alpine.js (TALL Stack). It uses [Laravel Queues](https://laravel.com/docs/11.x/queues) to send email notifications in the background. It uses SQLite as the database paired with the powerful [Eloquen ORM](https://laravel.com/docs/11.x/eloquent) to interact, query, migrate, and seed the database using [Factories](https://laravel.com/docs/11.x/eloquent-factories).
 
 ## Technology Stack
 

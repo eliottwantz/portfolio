@@ -1,6 +1,6 @@
 ---
 title: 'Plock'
-description: Plock is an all in one authentication server, providing email & password, email verification codes, two-factor authentication, OAuth with social providers, and passkey authentication, with session management using cookies and bearer tokens.
+description: Plock is an all-in-one authentication server, providing email & password, email verification codes, two-factor authentication, OAuth with social providers, and passkey authentication, with session management using cookies and bearer tokens.
 publishDate: 'June 12 2024'
 isFeatured: true
 tags: ['Sveltekit', 'TypeScript', 'Turso', 'Postgres', 'Kysely', 'Tailwindcss']
@@ -13,7 +13,7 @@ seo:
 import Carousel from '@/components/Carousel.svelte';
 
 **Project Overview:**
-Plock is an all in one authentication server, providing email & password, email verification codes, two-factor authentication, OAuth with social providers, and passkey authentication, with session management using cookies and bearer tokens.
+Plock is an all-in-one authentication server, providing email & password, email verification codes, two-factor authentication, OAuth with social providers, and passkey authentication, with session management using cookies and bearer tokens.
 
 <div class="flex justify-center mb-10">
   <Carousel
@@ -28,7 +28,7 @@ Plock is an all in one authentication server, providing email & password, email 
 
 ## Objectives
 
-1. Dead simple drop in replacement of your current auth solution.
+1. Dead simple drop-in replacement of your current auth solution.
 2. Use modern authentication methods, such as OAuth, email verification, and Passkeys.
 3. Usage for web and mobile apps.
 
@@ -36,15 +36,15 @@ Plock is an all in one authentication server, providing email & password, email 
 
 1. **Own your data**
 
-- Plock is not like many other third party cloud authentication service that stores your users data on their own servers. Plock is just an authentication server running as a single Docker container, that stores users and sessions in your database. That way, you get to keep your data.
+- Plock is not like many other third-party cloud authentication service that stores your users' data on their servers. Plock is just an authentication server running as a single Docker container, that stores users and sessions in your database. That way, you get to keep your data.
 
 2. **OAuth**
 
-- OAuth has become a standard for modern authentication. It is used by thousands of companies, simplifying the user experience. Plock provides many OAuth providers out of the box. As long as you provide the right client id and client secret, it will work.
+- OAuth has become a standard for modern authentication. It is used by thousands of companies, simplifying the user experience. Plock provides many OAuth providers out of the box. It will work as long as you provide the right client ID and client secret.
 
 3. **Passkeys**
 
-- Plock leverages passkeys to authenticate users seemlessly and securely. Passkeys are securly stored on the user's device, or their cloud chain when using iCloud or Google.
+- Plock leverages passkeys to authenticate users seamlessly and securely. Passkeys are securely stored on the user's device, or their cloud chain when using iCloud or Google.
 
 > Based on FIDO standards, passkeys are a replacement for passwords that provide faster, easier, and more secure sign-ins to websites and apps across a user's devices. Unlike passwords, passkeys are always strong and phishing-resistant.
 >
@@ -52,14 +52,14 @@ Plock is an all in one authentication server, providing email & password, email 
 
 4. **Email authentication**
 
-- Plock provides email verification links to users. THis way, users can authenticate themselves with their email address, without the need to remember a password.
+- Plock provides email verification links to users. This way, users can authenticate themselves with their email address, without remembering a password.
 - When a user initiates the authentication process, an email is sent to the user's email address with a one-time code. The user can then use this code to authenticate with Plock.
 
 ## Architecture
 
-Plock is self contained and can be deployed in any environment supporting Docker. Under the hood, it is a Sveltekit app that handles all the authentication request and provides a beautiful UI.
+Plock is self-contained and can be deployed in any environment supporting Docker. Under the hood, it is a Sveltekit app that handles all the authentication requests and provides a beautiful UI.
 
-When the user on your website starts the authentication flow when trying to login, here are redirected to the Plock server on your specified domain (environment variable). Then, the Plock server will handle the authentication request and redirect the user back to your website or mobile app.
+When the user on your website starts the authentication flow when trying to log in, here are redirected to the Plock server on your specified domain (environment variable). Then, the Plock server will handle the authentication request and redirect the user back to your website or mobile app.
 
 ## Technology Stack
 
