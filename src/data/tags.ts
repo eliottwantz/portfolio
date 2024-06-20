@@ -12,7 +12,8 @@ export const allTags = [
     'ElevenLabs',
     'Prisma',
     'Turso',
-    'TypeScript'
+    'TypeScript',
+    'Kysely'
 ] as const;
 export type Tag = (typeof allTags)[number];
 

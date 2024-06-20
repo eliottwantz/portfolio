@@ -3,7 +3,7 @@ title: 'Plock'
 description: Plock is an all in one authentication server, providing email & password, email verification codes, two-factor authentication, OAuth with social providers, and passkey authentication, with session management using cookies and bearer tokens.
 publishDate: 'June 12 2024'
 isFeatured: true
-tags: ['Sveltekit', 'TypeScript', 'Turso', 'Tailwindcss']
+tags: ['Sveltekit', 'TypeScript', 'Turso', 'Postgres', 'Kysely', 'Tailwindcss']
 seo:
   image:
     src: '/plock/readme.png'
@@ -59,12 +59,13 @@ Plock is an all in one authentication server, providing email & password, email 
 
 Plock is self contained and can be deployed in any environment supporting Docker. Under the hood, it is a Sveltekit app that handles all the authentication request and provides a beautiful UI.
 
-When the user on ypur website starts the authentication flow when trying to login, here are redirected to the Plock server on your specified domain (environment variable). Then, the Plock server will handle the authentication request and redirect the user back to your website or mobile app.
+When the user on your website starts the authentication flow when trying to login, here are redirected to the Plock server on your specified domain (environment variable). Then, the Plock server will handle the authentication request and redirect the user back to your website or mobile app.
 
 ## Technology Stack
 
 - [Sveltekit](https://kit.svelte.dev)
 - [Lucia Auth](https://github.com/lucia-auth/lucia)
+- [Kysely](https://kysely.dev)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Shadcn-Svelte](https://www.shadcn-svelte.com/)
 
