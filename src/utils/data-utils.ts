@@ -27,7 +27,12 @@ export function getAllTags(posts: CollectionEntry<"projects">[]) {
 		});
 }
 
-// export function getPostsByTag(posts: CollectionEntry<'projects'>[], tagSlug: string) {
-//     const filteredPosts: CollectionEntry<'blog'>[] = posts.filter((post) => (post.data.tags || []).map((tag) => slugify(tag)).includes(tagSlug));
-//     return filteredPosts;
-// }
+export function getProjectsByTag(
+	posts: CollectionEntry<"projects">[],
+	tagSlug: string,
+) {
+	const filteredProjects: CollectionEntry<"projects">[] = posts.filter((post) =>
+		(post.data.tags || []).map((tag) => slugify(tag)).includes(tagSlug),
+	);
+	return filteredProjects;
+}

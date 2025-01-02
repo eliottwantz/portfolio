@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Tag } from '@/data/tags';
-    import { getPostsByTag } from '@/utils/data-utils';
+    import { getProjectsByTag } from '@/utils/data-utils';
     import type { CollectionEntry } from 'astro:content';
 
     export let tags: { name: Tag; slug: string }[];
@@ -42,7 +42,7 @@
 </form>
 
 {#each filteredTags as tag}
-    {@const postCount = getPostsByTag(posts, tag.slug).length}
+    {@const postCount = getProjectsByTag(posts, tag.slug).length}
     <a class="mb-10 flex justify-between items-start gap-8 group sm:mb-12" href={`/tags/${tag.slug}`}>
         <div class="grow">
             <h2
