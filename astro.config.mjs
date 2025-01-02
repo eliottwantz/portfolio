@@ -4,8 +4,6 @@ import svelte from '@astrojs/svelte';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
-import cloudflare from '@astrojs/cloudflare';
-
 // https://astro.build/config
 export default defineConfig({
     site: 'https://develiott.com',
@@ -16,9 +14,5 @@ export default defineConfig({
             applyBaseStyles: false
         }),
         svelte()
-    ],
-    output: 'hybrid',
-    adapter: cloudflare({
-        imageService: 'passthrough'
-    })
+    ]
 });

@@ -5,7 +5,9 @@ seo:
   description: Learn more about my work experience and projects I have worked on.
 ---
 
-## 2024 - I am open to work
+## 2024 - [Morgan Stanley](https://www.morganstanley.com/)
+
+I am currently working as a C++ software developer with the trading programs team of the institutional trading division. I am working with **C++** and **Python** to maintain and improve the trading programs throughout the whole **Software Development Life Cycle** (SDLC). Since these platforms allow traders to place and execute orders, I am learning a lot about **trading** and **order management**.
 
 ## 2023 - [Ribbon Communications](https://ribboncommunications.com/)
 
@@ -13,4 +15,4 @@ I have worked professionally as a software engineer intern in the cloud native t
 
 ## 2022 - [Kruger Inc.](https://www.kruger.com/)
 
-I have worked as a data engineer intern at [Kruger Inc.](https://www.kruger.com/) where I built business intelligence dashboards foor internal teams using **PowerBi** and **Microsoft SQL Server**. I grew gained a strong experience with **SQL** and gained knowledge with **Business Intelligence** concepts, from **ETL** to **data lakes** and **data warehouse**, to **data visualization**.
+I have worked as a data engineer intern where I built business intelligence dashboards foor internal teams using **PowerBi** and **Microsoft SQL Server**. I grew gained a strong experience with **SQL** and gained knowledge with **Business Intelligence** concepts, from **ETL** to **data lakes** and **data warehouse**, to **data visualization**.
