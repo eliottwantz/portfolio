@@ -95,7 +95,7 @@ const siteConfig: SiteConfig = {
 	],
 	header: {
 		image: {
-			src: "/pp.jpg",
+			src: "/pp_gh.png",
 			alt: "Eliott Wantz",
 			caption: "Photo by Eliott Wantz",
 		},
