@@ -1,0 +1,89 @@
+---
+title: 'Workout'
+description: Workout is a 100% local-first iOS app for planning, logging, and tracking workouts. Built with Swift, SwiftUI, and SwiftData, it is designed for privacy, speed, and a native Apple experience, with optional iCloud sync and Live Activities support.
+publishDate: 'April 30 2025'
+isFeatured: true
+tags: ['Swift', 'SwiftUI', 'SwiftData', 'CloudKit', 'iOS', 'Offline', 'Privacy']
+seo:
+  image:
+    src: '/workout/home.png'
+    alt: Workout home screen
+---
+
+import Carousel from '@/components/Carousel.svelte';
+
+**Project Overview:**
+
+Workout was first created to fulfill my own needs for a flexible and private workout tracker. It is designed to work 100% locally and offline, so all features are available without an internet connection. The app enables users to plan workouts, log exercises, track progress, and receive personalized recommendations. It is suitable for both beginners and advanced athletes, supporting iPhones only. The app is fully translated in English and French.
+
+<div class="flex justify-center mb-10">
+  <Carousel
+    client:load
+    images={[
+      { src: '/workout/demo.mp4', alt: 'Demo of Workout' },
+      { src: '/workout/home.png', alt: 'Workout Log' },
+      { src: '/workout/pec.png', alt: 'Pec flys Exercise' },
+      { src: '/workout/started.png', alt: 'Started Workout View' },
+      { src: '/workout/liveactivity.png', alt: 'Live activity on lock screen' },
+      { src: '/workout/ota.png', alt: 'Web OTA Server' }
+    ]}
+  />
+</div>
+
+## Objectives
+
+1. 100% local and offline: all features work without an internet connection, with data stored securely on-device.
+2. Built to meet my personal requirements for flexibility, privacy, and control.
+3. Simple, fast, and intuitive—designed to feel like a native Apple app in every interaction.
+
+## Features
+
+1. **Custom Workout Creation**
+
+- Build and edit your own workout routines, including supersets and custom exercise order.
+- Add, remove, and rearrange exercises easily.
+
+2. **Exercise Library**
+
+- Maintain a personal library of exercises with custom names, categories, and notes.
+- Quickly add new exercises on the fly during a workout.
+
+3. **Workout Logging**
+
+- Log sets, reps, weights, and notes for each exercise in real time.
+- Start, pause, and resume workouts with automatic rest timers.
+
+4. **Progress Tracking**
+
+- View detailed workout history and personal records for each exercise.
+- Visualize progress with charts for volume, max weight, and consistency.
+
+5. **Personalization & Settings**
+
+- Choose your accent color and preferred units (kg/lb).
+- All data is stored locally and can be synced via iCloud if enabled.
+
+6. **Offline & Privacy**
+
+- 100% offline functionality: no account or internet required.
+- All data remains private and on your device unless you enable iCloud sync.
+
+7. **Live Activities & Dynamic Island**
+
+- View the current workout state in real time directly on the Lock Screen and in the Dynamic Island (on supported devices).
+- Stay on top of rest timers, active sets, and workout progress without unlocking your device.
+
+## Architecture
+
+Workout is a 100% local-first iOS app built with Swift, SwiftUI, and SwiftData. All workout data is stored securely on-device, ensuring privacy and full offline functionality. The architecture is designed for speed, reliability, and extensibility, with a focus on a smooth and responsive user experience that feels like a native Apple app.
+
+Optionally, users signed in with iCloud on their iPhone get sync via CloudKit out of the box, to keep their data up-to-date across Apple devices. No external servers or third-party services are required, and all features work offline by default, only using an internet connection for sync.
+
+For development and testing, I have also created an OTA (Over-The-Air) server to distribute debug builds of the app, available at "https://workout.develiott.com". This allows for easy installation and testing of new versions on physical devices without going through the App Store, streamlining the development workflow.
+
+## Technology Stack
+
+- [Swift](https://swift.org)
+- [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+- [SwiftData](https://developer.apple.com/xcode/swiftdata/)
+- [CloudKit](https://developer.apple.com/icloud/cloudkit/)

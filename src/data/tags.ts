@@ -18,6 +18,13 @@ export const allTags = [
 	"Langchain",
 	"Ollama",
 	"AI",
+	"Swift",
+	"SwiftUI",
+	"SwiftData",
+	"CloudKit",
+	"iOS",
+	"Offline",
+	"Privacy",
 ] as const;
 export type Tag = (typeof allTags)[number];
 

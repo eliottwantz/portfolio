@@ -32,7 +32,11 @@
                 <Carousel.Item>
                     <Card.Root>
                         <Card.Content class="overflow-hidden flex aspect-square items-center justify-center">
-                            <img src={image.src} alt={image.alt} />
+                            {#if image.src.endsWith('.mp4')}
+                                <video class="object-cover" autoplay loop muted playsinline src={image.src}></video>
+                            {:else}
+                                <img src={image.src} alt={image.alt} />
+                            {/if}
                         </Card.Content>
                         <small class="pl-6 text-sm text-muted-foreground">{image.alt}</small>
                     </Card.Root>
