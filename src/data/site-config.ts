@@ -69,6 +69,10 @@ const siteConfig: SiteConfig = {
 		//     href: '/blog'
 		// },
 		{
+			text: "All my sites",
+			href: "/all-my-sites",
+		},
+		{
 			text: "Tags",
 			href: "/tags",
 		},
