@@ -8,4 +8,4 @@ seo:
 Thank you for reaching out! Whether you have a question, a suggestion, or just want to share your thoughts, I'm all ears. Feel free to get in touch through any of the methods below:
 
 _Email:_
-Feel free to drop me an email at [dev.eliottdev@gmail.com](mailto:dev.eliottdev@gmail.com), and I'll do my best to respond as soon as possible.
+Feel free to drop me an email at [work@develiott.com](mailto:work@develiott.com), and I'll do my best to respond as soon as possible.
