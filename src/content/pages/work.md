@@ -5,10 +5,13 @@ seo:
   description: Learn more about my work experience and projects I have worked on.
 ---
 
+## 2025 - present - <a href="https://leapevent.tech/" target="_blank" rel="noopener noreferrer">Leap Event Technology</a>
+
+Working as an **iOS Developer** in a small, agile team of 2-10 developers. I build and maintain mobile the iOS mobile app and core librairies using **SwiftUI**, **UIKit**, **Xcode**, **Pointfree**, and **GRDB**. My day-to-day responsibilities include developing new features, fixing bugs, and participating in dev talks to share knowledge and improve our codebase. We work in sprints to deliver high-quality features efficiently.
+
 ## 2024 - present - <a href="https://dataannotation.tech/" target="_blank" rel="noopener noreferrer">DataAnnotation</a>
 
 Train SOTA models for coding-related tasks across various languages (Typescript, Python, Go, Rust, Java, etc.) and domains (CLIs, APIs, servers, web apps, full-stack, CI/CD pipelines, LLMs, etc). Create meticulously crafted prompts to challenge models and annotate their responses. Integrate AI agents into applications and utilize AI coding tools.
-Transferable skills include AI, AI agents, large language models, data annotation, AI applications, AI integration, and AI coding tools.
 
 ## 2024 - 2025 - <a href="https://www.morganstanley.com/" target="_blank" rel="noopener noreferrer">Morgan Stanley</a>
 
