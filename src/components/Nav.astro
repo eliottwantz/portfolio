@@ -1,51 +1,51 @@
 ---
 interface Props {
-  currentPath: string;
+    currentPath: string;
 }
 
 const { currentPath } = Astro.props;
 
 const links = [
-  { href: "/", label: "Home", mobileHidden: true },
-  { href: "/work", label: "Work" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+    { href: "/", label: "Home", mobileHidden: true },
+    { href: "/work", label: "Work" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
 ];
 
 function isActive(linkHref: string, path: string): boolean {
-  if (linkHref === "/") return path === "/";
-  return path.startsWith(linkHref);
+    if (linkHref === "/") return path === "/";
+    return path.startsWith(linkHref);
 }
 ---
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-deep/70 border-b border-amber/[0.05]"
+    class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-deep/70 border-b border-amber/[0.05]"
 >
-  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a
-      href="/"
-      class="font-display text-xl tracking-wide text-cream/90 hover:text-amber transition-colors duration-300"
-    >
-      Eliott
-    </a>
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a
+            href="/"
+            class="font-display text-xl tracking-wide text-cream/90 hover:text-amber transition-colors duration-300"
+        >
+            Eliott Wantz
+        </a>
 
-    <div class="flex items-center gap-4 sm:gap-7">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "nav-link text-xs sm:text-sm font-body tracking-wider uppercase transition-colors duration-300",
-              isActive(link.href, currentPath)
-                ? "text-amber active"
-                : "text-muted hover:text-cream",
-              link.mobileHidden && "hidden sm:inline",
-            ]}
-          >
-            {link.label}
-          </a>
-        ))
-      }
+        <div class="flex items-center gap-4 sm:gap-7">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class:list={[
+                            "nav-link text-xs sm:text-sm font-body tracking-wider uppercase transition-colors duration-300",
+                            isActive(link.href, currentPath)
+                                ? "text-amber active"
+                                : "text-muted hover:text-cream",
+                            link.mobileHidden && "hidden sm:inline",
+                        ]}
+                    >
+                        {link.label}
+                    </a>
+                ))
+            }
+        </div>
     </div>
-  </div>
 </nav>

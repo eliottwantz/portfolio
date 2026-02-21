@@ -3,143 +3,149 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Eliott — Software Developer">
-  <!-- ═══ Hero ═══ -->
-  <section
-    class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-16"
-  >
-    <!-- Floating ghost words -->
-    <div
-      class="absolute inset-0 pointer-events-none overflow-hidden select-none hidden md:block"
-      aria-hidden="true"
+    <!-- ═══ Hero ═══ -->
+    <section
+        class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-16"
     >
-      <span
-        class="absolute top-[16%] left-[6%] font-display italic text-amber/[0.05] text-8xl animate-float"
-        >irgendwie</span
-      >
-      <span
-        class="absolute top-[42%] right-[4%] font-display italic text-rose/[0.04] text-7xl animate-float"
-        style="animation-delay: 2s;">irgendwo</span
-      >
-      <span
-        class="absolute bottom-[20%] left-[12%] font-display italic text-lavender/[0.04] text-6xl animate-float"
-        style="animation-delay: 4s;">irgendwann</span
-      >
-    </div>
-
-    <div class="relative text-center max-w-3xl">
-      <p
-        class="font-body text-xs sm:text-sm tracking-[0.35em] uppercase text-muted/80 mb-8 animate-fade-up"
-        style="animation-delay: 0.15s;"
-      >
-        Software Developer
-      </p>
-
-      <h1
-        class="font-display text-7xl sm:text-8xl md:text-9xl font-light tracking-tight text-cream text-glow-amber animate-fade-up"
-        style="animation-delay: 0.3s;"
-      >
-        Eliott
-      </h1>
-
-      <div class="mt-10 animate-fade-up" style="animation-delay: 0.5s;">
-        <p
-          class="font-display italic text-lg sm:text-xl md:text-2xl text-muted font-light leading-relaxed"
+        <!-- Floating ghost words -->
+        <div
+            class="absolute inset-0 pointer-events-none overflow-hidden select-none hidden md:block"
+            aria-hidden="true"
         >
-          Building things that endure —<br />
-          <span class="text-amber/70">somehow, somewhere, sometime</span>
-        </p>
-      </div>
+            <span
+                class="absolute top-[16%] left-[6%] font-display italic text-amber/[0.08] text-8xl animate-float"
+                >irgendwie</span
+            >
+            <span
+                class="absolute top-[42%] right-[4%] font-display italic text-rose/[0.1] text-7xl animate-float"
+                style="animation-delay: 2s;">irgendwo</span
+            >
+            <span
+                class="absolute bottom-[20%] left-[12%] font-display italic text-lavender/[0.1] text-6xl animate-float"
+                style="animation-delay: 4s;">irgendwann</span
+            >
+        </div>
 
-      <div class="mt-20 animate-fade-up" style="animation-delay: 0.75s;">
-        <div class="divider-shimmer w-20 mx-auto"></div>
-      </div>
-    </div>
+        <div class="relative text-center max-w-3xl">
+            <p
+                class="font-body text-xs sm:text-sm tracking-[0.35em] uppercase text-muted/80 mb-8 animate-fade-up"
+                style="animation-delay: 0.15s;"
+            >
+                Software Developer
+            </p>
 
-    <!-- Scroll hint -->
-    <div
-      class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in"
-      style="animation-delay: 1.4s;"
-      aria-hidden="true"
-    >
-      <div
-        class="w-px h-14 bg-gradient-to-b from-amber/30 to-transparent"
-      >
-      </div>
-    </div>
-  </section>
+            <h1
+                class="font-display text-7xl sm:text-8xl md:text-9xl font-light tracking-tight text-cream text-glow-amber animate-fade-up"
+                style="animation-delay: 0.3s;"
+            >
+                <span>Eliott</span>
+                <span>Wantz</span>
+            </h1>
 
-  <!-- ═══ About ═══ -->
-  <section class="relative max-w-2xl mx-auto px-6 py-28">
-    <div data-reveal>
-      <h2 class="font-display text-3xl md:text-4xl font-light text-cream/90 mb-8">
-        Im Strom der Zeit
-      </h2>
-      <div class="space-y-5 text-muted leading-[1.85] text-[15px]">
-        <p>
-          I'm a software developer who believes the best code flows naturally
-          — elegant, purposeful, and enduring. Like a well-composed melody,
-          great software finds its rhythm between complexity and simplicity.
-        </p>
-        <p>
-          With a focus on web technologies and modern architectures, I build
-          interfaces and systems that feel inevitable — as if they were always
-          meant to exist.
-        </p>
-      </div>
-    </div>
-  </section>
+            <div class="mt-10 animate-fade-up" style="animation-delay: 0.5s;">
+                <p
+                    class="font-display italic text-lg sm:text-xl md:text-2xl text-muted font-light leading-relaxed"
+                >
+                    Building things that endure —<br />
+                    <span class="text-amber/70"
+                        >somehow, somewhere, sometime</span
+                    >
+                </p>
+            </div>
 
-  <!-- ═══ Navigation cards ═══ -->
-  <section class="max-w-4xl mx-auto px-6 pb-28">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <a
-        href="/work"
-        class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
-        data-reveal
-        data-delay="1"
-      >
-        <span
-          class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
-          >Work</span
+            <div class="mt-20 animate-fade-up" style="animation-delay: 0.75s;">
+                <div class="divider-shimmer w-20 mx-auto"></div>
+            </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in"
+            style="animation-delay: 1.4s;"
+            aria-hidden="true"
         >
-        <p
-          class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
-        >
-          Experience &amp; journey
-        </p>
-      </a>
-      <a
-        href="/projects"
-        class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
-        data-reveal
-        data-delay="2"
-      >
-        <span
-          class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
-          >Projects</span
-        >
-        <p
-          class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
-        >
-          Things I&rsquo;ve built
-        </p>
-      </a>
-      <a
-        href="/contact"
-        class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
-        data-reveal
-        data-delay="3"
-      >
-        <span
-          class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
-          >Contact</span
-        >
-        <p
-          class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
-        >
-          Let&rsquo;s connect
-        </p>
-      </a>
-    </div>
-  </section>
+            <div
+                class="w-px h-14 bg-gradient-to-b from-amber/30 to-transparent"
+            >
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ About ═══ -->
+    <section class="relative max-w-2xl mx-auto px-6 py-28">
+        <div data-reveal>
+            <h2
+                class="font-display text-3xl md:text-4xl font-light text-cream/90 mb-8"
+            >
+                Im Strom der Zeit
+            </h2>
+            <div class="space-y-5 text-muted leading-[1.85] text-[15px]">
+                <p>
+                    I'm a software developer who believes the best code flows
+                    naturally — elegant, purposeful, and enduring. Like a
+                    well-composed melody, great software finds its rhythm
+                    between complexity and simplicity.
+                </p>
+                <p>
+                    With a focus on web technologies and modern architectures, I
+                    build interfaces and systems that feel inevitable — as if
+                    they were always meant to exist.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Navigation cards ═══ -->
+    <section class="max-w-4xl mx-auto px-6 pb-28">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <a
+                href="/work"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="1"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Work</span
+                >
+                <p
+                    class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Experience &amp; journey
+                </p>
+            </a>
+            <a
+                href="/projects"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="2"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Projects</span
+                >
+                <p
+                    class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Things I&rsquo;ve built
+                </p>
+            </a>
+            <a
+                href="/contact"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="3"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Contact</span
+                >
+                <p
+                    class="mt-3 text-sm text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Let&rsquo;s connect
+                </p>
+            </a>
+        </div>
+    </section>
 </Layout>
