@@ -2,13 +2,23 @@
 import Layout from "./Layout.astro";
 
 interface Props {
-    title: string;
-    description: string;
-    publishDate: string;
+    title?: string;
+    description?: string;
+    publishDate?: string;
     tags?: string[];
+    frontmatter?: {
+        title?: string;
+        description?: string;
+        publishDate?: string;
+        tags?: string[];
+    };
 }
 
-const { title, description, publishDate, tags = [] } = Astro.props;
+const { frontmatter } = Astro.props as Props;
+const title = frontmatter?.title ?? Astro.props.title ?? "";
+const description = frontmatter?.description ?? Astro.props.description ?? "";
+const publishDate = frontmatter?.publishDate ?? Astro.props.publishDate ?? "";
+const tags = frontmatter?.tags ?? Astro.props.tags ?? [];
 ---
 
 <Layout title={`${title} — Eliott`} description={description}>
@@ -53,7 +63,7 @@ const { title, description, publishDate, tags = [] } = Astro.props;
                 }
             </header>
 
-            <section class="project-rich mt-12" data-reveal data-delay="2">
+            <section class="project-rich mt-12">
                 <slot />
             </section>
         </div>
