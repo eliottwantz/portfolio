@@ -1,24 +1,17 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 
 interface Props {
-    title?: string;
-    description?: string;
-    publishDate?: string;
-    tags?: string[];
-    frontmatter?: {
-        title?: string;
-        description?: string;
-        publishDate?: string;
-        tags?: string[];
-    };
+    project: CollectionEntry<"projects">;
 }
 
-const { frontmatter } = Astro.props as Props;
-const title = frontmatter?.title ?? Astro.props.title ?? "";
-const description = frontmatter?.description ?? Astro.props.description ?? "";
-const publishDate = frontmatter?.publishDate ?? Astro.props.publishDate ?? "";
-const tags = frontmatter?.tags ?? Astro.props.tags ?? [];
+const {
+    project: {
+        data: {title, description, publishDate, slug, tags, isFeatured, seo}
+    }
+} = Astro.props as Props
+const projectTransitionName = `project-${slug}`
 ---
 
 <Layout title={`${title} — Eliott`} description={description}>
@@ -34,6 +27,7 @@ const tags = frontmatter?.tags ?? Astro.props.tags ?? [];
             </a>
 
             <header
+                transition:name={projectTransitionName}
                 class="mt-8 border border-rule/80 bg-surface/35 rounded-sm p-6 sm:p-10"
                 data-reveal
             >

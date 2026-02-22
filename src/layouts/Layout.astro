@@ -81,7 +81,7 @@ const ogImageUrl = new URL(
 
         <Nav currentPath={currentPath} />
 
-        <main class="site-main">
+        <main class="site-main" transition:animate="none">
             <slot />
         </main>
 
@@ -108,8 +108,23 @@ const ogImageUrl = new URL(
         <!-- Scroll reveal observer -->
         <script>
             let revealObserver: IntersectionObserver;
+            let backToTopButton: HTMLButtonElement | null = null;
             let hasBackToTopScrollListener = false;
             let hasBackToTopClickListener = false;
+
+            const toggleBackToTopButton = () => {
+                if (!(backToTopButton instanceof HTMLButtonElement)) return;
+                const isVisible = window.scrollY > 320;
+                backToTopButton.classList.toggle("is-visible", isVisible);
+                backToTopButton.hidden = !isVisible;
+            };
+
+            const onBackToTopClick = (event: Event) => {
+                if (!(backToTopButton instanceof HTMLButtonElement)) return;
+                if (!(event.target instanceof Node)) return;
+                if (!backToTopButton.contains(event.target)) return;
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            };
 
             const initializePageEnhancements = () => {
                 const reveals = document.querySelectorAll("[data-reveal]");
@@ -132,28 +147,20 @@ const ogImageUrl = new URL(
 
                 reveals.forEach((el) => revealObserver.observe(el));
 
-                const backToTopButton = document.querySelector("[data-back-to-top]");
+                backToTopButton = document.querySelector("[data-back-to-top]");
                 if (!(backToTopButton instanceof HTMLButtonElement)) return;
 
-                const toggleButton = () => {
-                    const isVisible = window.scrollY > 320;
-                    backToTopButton.classList.toggle("is-visible", isVisible);
-                    backToTopButton.hidden = !isVisible;
-                };
-
-                toggleButton();
+                toggleBackToTopButton();
 
                 if (!hasBackToTopScrollListener) {
-                    window.addEventListener("scroll", toggleButton, {
+                    window.addEventListener("scroll", toggleBackToTopButton, {
                         passive: true,
                     });
                     hasBackToTopScrollListener = true;
                 }
 
                 if (!hasBackToTopClickListener) {
-                    backToTopButton.addEventListener("click", () => {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    });
+                    document.addEventListener("click", onBackToTopClick);
                     hasBackToTopClickListener = true;
                 }
             };

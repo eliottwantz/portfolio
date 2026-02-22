@@ -182,7 +182,12 @@ body::after {
 
 .divider-shimmer {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-amber), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-amber),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 4s ease-in-out infinite;
 }

@@ -24,13 +24,12 @@ const projects = (await getCollection("projects"))
     <section class="pt-36 pb-12 px-6">
         <div class="max-w-2xl mx-auto">
             <h1
-                class="font-display text-5xl sm:text-6xl md:text-7xl font-light text-cream/90 animate-fade-up"
+                class="font-display text-5xl sm:text-6xl md:text-7xl font-light text-cream/90"
             >
                 Projects
             </h1>
             <p
                 class="mt-5 font-display italic text-xl text-muted animate-fade-up"
-                style="animation-delay: 0.12s;"
             >
                 Things I&rsquo;ve brought to life
             </p>
@@ -38,12 +37,13 @@ const projects = (await getCollection("projects"))
     </section>
 
     <!-- Grid -->
-    <section class="max-w-3xl mx-auto px-6 pb-32">
+    <section class="max-w-3xl mx-auto px-6 pb-32 animate-fade-up" style="animation-delay: 0.12s;">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             {
-                projects.map((project, i) => (
+                projects.map((project) => (
                     <a
                         href={`/projects/${project.data.slug}`}
+                        transition:name={`project-${project.data.slug}`}
                         class="group relative block p-8 border border-rule rounded-sm bg-surface/40
                    hover:border-amber/20 hover:bg-elevated/50
                    transition-all duration-500
