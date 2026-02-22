@@ -5,14 +5,19 @@ import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
-	prefetch: {
-		prefetchAll: true,
+  prefetch: {
+      prefetchAll: true,
 	},
-	vite: {
-		plugins: [tailwindcss()],
+
+  vite: {
+      plugins: [tailwindcss()],
 	},
-	site: "https://develiott.com",
-	integrations: [mdx(), svelte()],
+
+  site: "https://develiott.com",
+  integrations: [mdx(), svelte()],
+  adapter: cloudflare(),
 });
