@@ -69,6 +69,16 @@
 
     function onPointerDown(event: PointerEvent) {
         if (event.pointerType === "mouse" && event.button !== 0) return;
+        if (event.target instanceof Element) {
+            const isControlPress = event.target.closest(
+                "[data-carousel-control]",
+            );
+            if (isControlPress) {
+                isPointerActive = false;
+                pointerStartSlideIndex = null;
+                return;
+            }
+        }
 
         pointerStartX = event.clientX;
         pointerStartY = event.clientY;
@@ -214,6 +224,7 @@
                     class="nav-button prev"
                     type="button"
                     onclick={previous}
+                    data-carousel-control
                     aria-label="Previous"
                 >
                     &#8249;
@@ -222,6 +233,7 @@
                     class="nav-button next"
                     type="button"
                     onclick={next}
+                    data-carousel-control
                     aria-label="Next"
                 >
                     &#8250;
@@ -433,11 +445,22 @@
         color: oklch(from var(--color-cream) l c h / 0.95);
         display: grid;
         place-items: center;
+        font-size: 0;
         cursor: pointer;
         transition:
             border-color 180ms ease,
             background-color 180ms ease,
             color 180ms ease;
+    }
+
+    .modal-close span {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        font-size: 1.45rem;
+        line-height: 1;
+        transform: translateY(-0.03em);
     }
 
     .modal-close:hover {
@@ -626,6 +649,10 @@
             height: 1.7rem;
             top: 0.35rem;
             right: 0.35rem;
+        }
+
+        .modal-close span {
+            font-size: 1.25rem;
         }
     }
 </style>
