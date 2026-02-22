@@ -111,7 +111,7 @@ body::after {
 /* ── Scrollbar ─────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -120,7 +120,7 @@ body::after {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-rule);
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -197,5 +197,5 @@ body::after {
 .text-glow-amber {
   text-shadow:
     0 0 100px rgba(200, 150, 60, 0.12),
-    0 0 40px rgba(200, 150, 60, 0.06);
+    0 0 40px rgba(200, 150, 60, 0.16);
 }
