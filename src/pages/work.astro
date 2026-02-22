@@ -11,7 +11,7 @@ const experiences = [
             "Working as an iOS developer in a small, agile team of 2-10 developers. Building and maintaining the iOS app and core libraries using SwiftUI, UIKit, Xcode, Point-Free, and GRDB. Day-to-day work includes shipping new features, fixing bugs, and joining dev talks to improve the codebase while delivering in sprints.",
     },
     {
-        role: "AI Model Trainer (Coding)",
+        role: "AI Model Trainer",
         company: "DataAnnotation",
         companyUrl: "https://dataannotation.tech/",
         period: "2024 — Present",
@@ -71,7 +71,7 @@ const experiences = [
         <div class="relative">
             <!-- Vertical golden thread -->
             <div
-                class="absolute left-[3px] top-3 bottom-0 w-px bg-gradient-to-b from-amber/40 via-amber/15 to-transparent"
+                class="absolute left-0.75 top-3 bottom-0 w-px bg-linear-to-b from-amber/40 via-amber/15 to-transparent"
                 aria-hidden="true"
             >
             </div>
@@ -79,24 +79,21 @@ const experiences = [
             <div class="space-y-20 pl-12">
                 {
                     experiences.map((exp, i) => (
-                        <article
-                            class="relative"
-                            data-reveal
-                            data-delay={String(i + 1)}
-                        >
-                            {/* Timeline dot */}
-                            <div
-                                class="absolute -left-12 top-[6px] flex items-center justify-center"
-                                aria-hidden="true"
-                            >
-                                <span class="w-[7px] h-[7px] rounded-full bg-amber/70" />
-                                <span class="absolute w-[7px] h-[7px] rounded-full bg-amber/30 animate-glow-pulse" />
-                            </div>
-
+                        <article class="relative" data-reveal>
                             <div class="space-y-2">
-                                <span class="text-xs tracking-[0.25em] uppercase text-faded font-body">
-                                    {exp.period}
-                                </span>
+                                <div class="relative">
+                                    {/* Timeline dot aligned to period text center */}
+                                    <div
+                                        class="absolute -left-12 top-1/2 -translate-y-1/2 flex items-center justify-center"
+                                        aria-hidden="true"
+                                    >
+                                        <span class="w-1.75 h-1.75 rounded-full bg-amber/70" />
+                                        <span class="absolute w-1.75 h-1.75 rounded-full bg-amber/30 animate-glow-pulse" />
+                                    </div>
+                                    <span class="block text-xs leading-none tracking-[0.25em] uppercase text-faded font-body">
+                                        {exp.period}
+                                    </span>
+                                </div>
                                 <h2 class="font-display text-2xl md:text-3xl text-cream/90 font-light">
                                     {exp.role}
                                 </h2>
@@ -106,9 +103,23 @@ const experiences = [
                                             href={exp.companyUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            class="hover:text-amber transition-colors"
+                                            class="group inline-flex items-center gap-1.5 hover:text-amber transition-colors"
                                         >
-                                            {exp.company}
+                                            <span>{exp.company}</span>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="h-3.5 w-3.5 translate-y-px opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0"
+                                                aria-hidden="true"
+                                            >
+                                                <path d="M7 17 17 7" />
+                                                <path d="M9 7h8v8" />
+                                            </svg>
                                         </a>
                                     ) : (
                                         exp.company
