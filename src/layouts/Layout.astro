@@ -1,12 +1,13 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 import "@fontsource-variable/cormorant-garamond";
 import "@fontsource-variable/manrope";
 
 interface Props {
-    title: string;
-    description?: string;
+	title: string;
+	description?: string;
 }
 
 const { title, description = "Software Developer — Portfolio" } = Astro.props;
@@ -14,8 +15,8 @@ const currentPath = Astro.url.pathname;
 const canonicalUrl = Astro.url.href;
 const ogImagePath = "/og-image.jpeg";
 const ogImageUrl = new URL(
-    ogImagePath,
-    Astro.site ? Astro.site : Astro.url,
+	ogImagePath,
+	Astro.site ? Astro.site : Astro.url,
 ).toString();
 ---
 
@@ -24,6 +25,7 @@ const ogImageUrl = new URL(
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
+        <ClientRouter />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -105,23 +107,34 @@ const ogImageUrl = new URL(
 
         <!-- Scroll reveal observer -->
         <script>
-            const reveals = document.querySelectorAll("[data-reveal]");
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("revealed");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
-            );
-            reveals.forEach((el) => observer.observe(el));
+            let revealObserver: IntersectionObserver;
+            let hasBackToTopScrollListener = false;
+            let hasBackToTopClickListener = false;
 
-            const backToTopButton = document.querySelector("[data-back-to-top]");
+            const initializePageEnhancements = () => {
+                const reveals = document.querySelectorAll("[data-reveal]");
 
-            if (backToTopButton instanceof HTMLButtonElement) {
+                if (revealObserver) {
+                    revealObserver.disconnect();
+                }
+
+                revealObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("revealed");
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+                );
+
+                reveals.forEach((el) => revealObserver.observe(el));
+
+                const backToTopButton = document.querySelector("[data-back-to-top]");
+                if (!(backToTopButton instanceof HTMLButtonElement)) return;
+
                 const toggleButton = () => {
                     const isVisible = window.scrollY > 320;
                     backToTopButton.classList.toggle("is-visible", isVisible);
@@ -129,12 +142,24 @@ const ogImageUrl = new URL(
                 };
 
                 toggleButton();
-                window.addEventListener("scroll", toggleButton, { passive: true });
 
-                backToTopButton.addEventListener("click", () => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
-            }
+                if (!hasBackToTopScrollListener) {
+                    window.addEventListener("scroll", toggleButton, {
+                        passive: true,
+                    });
+                    hasBackToTopScrollListener = true;
+                }
+
+                if (!hasBackToTopClickListener) {
+                    backToTopButton.addEventListener("click", () => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    });
+                    hasBackToTopClickListener = true;
+                }
+            };
+
+            initializePageEnhancements();
+            document.addEventListener("astro:page-load", initializePageEnhancements);
         </script>
     </body>
 </html>
