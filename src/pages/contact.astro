@@ -46,13 +46,6 @@ const contacts = [
 
     <!-- Content -->
     <section class="max-w-2xl mx-auto px-6 pb-32">
-        <!-- <div data-reveal>
-            <p class="text-muted leading-[1.85] text-[15px] max-w-lg mb-12">
-                Whether you have a project in mind, a question, or simply want
-                to say hello — I'd love to hear from you. The best things often
-                start with a simple message.
-            </p>
-        </div> -->
 
         <div class="space-y-4">
             {
@@ -75,7 +68,7 @@ const contacts = [
                         data-reveal
                         data-delay={String(i + 1)}
                     >
-                        <span class="text-amber/50 group-hover:text-amber transition-colors duration-300 flex-shrink-0">
+                        <span class="text-amber/50 group-hover:text-amber transition-colors duration-300 shrink-0">
                             {contact.iconType === "stroke" ? (
                                 <svg
                                     class="w-5 h-5"
