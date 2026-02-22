@@ -8,6 +8,7 @@
   "observability": {
     "enabled": true
   },
+  "workers_dev": false,
   "routes": [
     {
       "pattern": "develiott.com",
@@ -18,7 +19,7 @@
       "custom_domain": true
     },
     {
-      "pattern": "portfolio.example.com",
+      "pattern": "portfolio.develiott.com",
       "custom_domain": true
     }
   ]
