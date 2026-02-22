@@ -7,5 +7,19 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "develiott.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.develiott.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "portfolio.example.com",
+      "custom_domain": true
+    }
+  ]
 }
