@@ -3,32 +3,51 @@ import Layout from "../layouts/Layout.astro";
 
 const experiences = [
     {
-        role: "Senior Software Developer",
-        company: "Company Name",
-        period: "2023 — Present",
+        role: "iOS Developer",
+        company: "Leap Event Technology",
+        companyUrl: "https://leapevent.tech/",
+        period: "2025 — Present",
         description:
-            "Leading development of web applications, shaping architecture decisions, and mentoring the team. Working across TypeScript, React, and cloud-native systems.",
+            "Working as an iOS developer in a small, agile team of 2-10 developers. Building and maintaining the iOS app and core libraries using SwiftUI, UIKit, Xcode, Point-Free, and GRDB. Day-to-day work includes shipping new features, fixing bugs, and joining dev talks to improve the codebase while delivering in sprints.",
+    },
+    {
+        role: "AI Model Trainer (Coding)",
+        company: "DataAnnotation",
+        companyUrl: "https://dataannotation.tech/",
+        period: "2024 — Present",
+        description:
+            "Training state-of-the-art models for coding tasks across multiple languages (TypeScript, Python, Go, Rust, Java, and more) and domains (CLIs, APIs, servers, web apps, full-stack systems, CI/CD pipelines, and LLM workflows). Crafting rigorous prompts, annotating model responses, and integrating AI agents into real applications.",
     },
     {
         role: "Software Developer",
-        company: "Another Company",
-        period: "2021 — 2023",
+        company: "Morgan Stanley",
+        companyUrl: "https://www.morganstanley.com/",
+        period: "2024 — 2025",
         description:
-            "Built and maintained full-stack applications serving thousands of users. Contributed to system design and improved CI/CD pipelines.",
+            "Worked with the institutional trading division to maintain and improve trading programs through the full software development life cycle. Built and supported systems in C++ and Python used for order placement and execution, while developing strong domain knowledge in trading and order management.",
     },
     {
-        role: "Junior Developer",
-        company: "First Company",
-        period: "2019 — 2021",
+        role: "Software Engineer Intern",
+        company: "Ribbon Communications",
+        companyUrl: "https://ribboncommunications.com/",
+        period: "2023",
         description:
-            "Where it all began — building web interfaces, learning the craft, and discovering that writing code is a form of thinking.",
+            "Worked in a cloud-native team using Go, Kubernetes (OpenShift), Docker, Prometheus, etcd, and MongoDB. Contributed across services ranging from small microservices to larger distributed systems and gained practical experience building scalable platforms.",
+    },
+    {
+        role: "Data Engineer Intern",
+        company: "Kruger Inc.",
+        companyUrl: "https://www.kruger.com/",
+        period: "2022",
+        description:
+            "Built internal business intelligence dashboards using Power BI and Microsoft SQL Server. Developed strong SQL and BI fundamentals across ETL pipelines, data lakes, data warehouses, and data visualization.",
     },
 ];
 ---
 
 <Layout
     title="Work — Eliott"
-    description="Professional experience and career journey."
+    description="Learn more about my work experience and projects I have worked on."
 >
     <!-- Header -->
     <section class="pt-36 pb-12 px-6">
@@ -82,7 +101,20 @@ const experiences = [
                                     {exp.role}
                                 </h2>
                                 <p class="text-amber/60 text-sm font-body tracking-wide">
-                                    {exp.company}
+                                    {
+                                        exp.companyUrl ? (
+                                            <a
+                                                href={exp.companyUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="hover:text-amber transition-colors"
+                                            >
+                                                {exp.company}
+                                            </a>
+                                        ) : (
+                                            exp.company
+                                        )
+                                    }
                                 </p>
                                 <p class="mt-4 text-muted leading-[1.85] text-[15px]">
                                     {exp.description}
