@@ -11,6 +11,8 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/svelte": "^7.2.5",
+    "@fontsource-variable/cormorant-garamond": "^5.2.6",
+    "@fontsource-variable/manrope": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.17.1",
     "svelte": "^5.53.1",
