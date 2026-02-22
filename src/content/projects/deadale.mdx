@@ -19,13 +19,13 @@ seo:
     alt: "Project preview"
 ---
 
-import ProjectCarousel from "@/components/ProjectCarousel.svelte";
+import Carousel from "@/components/Carousel.svelte";
 
 **Project Overview:** Deadale is a startup co-founded by my friends and I. We wanted to create an app that lets users expand their advertising reach by generating multiple versions of their advertisements in different languages and accents. We launched the app two weeks after the idea and gathered feedback from our users. We then improved the app and launched it on Product Hunt, with an easy 1000 users in the first week.
 
 <div class="project-carousel-shell">
-  <ProjectCarousel
-    client:visible
+  <Carousel
+    client:load
     images={[
       { src: "/deadale/1.png", alt: "Landing page of the Deadale website" },
       { src: "/deadale/2.png", alt: "Video upload process" },

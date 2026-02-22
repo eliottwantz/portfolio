@@ -190,6 +190,7 @@
     {#if totalSlides > 0}
         <div
             class="viewport"
+            role="group"
             onpointerdown={onPointerDown}
             onpointerup={onPointerUp}
             onpointercancel={onPointerCancel}

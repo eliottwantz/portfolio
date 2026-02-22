@@ -4,20 +4,24 @@ slug: "ownllama"
 description: OwnLlama is your personal local AI assistant, leveraging Llama3 and Ollama. It allows simple chat and also RAG chat with your own documents.
 publishDate: "2024-09-01"
 isFeatured: true
-tags: ["AI", "SvelteKit", "TypeScript", "Ollama", "Python", "Langchain", "Tailwind CSS"]
+tags:
+  ["AI", "SvelteKit", "TypeScript", "Ollama", "Python", "Langchain", "Tailwind"]
 seo:
   image:
     src: "/plock/readme.png"
     alt: "Project preview"
 ---
 
-import ProjectCarousel from "@/components/ProjectCarousel.svelte";
+import Carousel from "@/components/Carousel.svelte";
 
 **Project Overview:**
 OwnLlama is your personal local AI assistant, leveraging any open source LLM from Ollama. It allows simple chat and also RAG chat with your own documents.
 
 <div class="project-carousel-shell">
-  <ProjectCarousel client:load images={[{ src: "/ownllama/demo.gif", alt: "Demo of OwnLlama" }]} />
+  <Carousel
+    client:load
+    images={[{ src: "/ownllama/demo.gif", alt: "Demo of OwnLlama" }]}
+  />
 </div>
 
 ## Objectives
