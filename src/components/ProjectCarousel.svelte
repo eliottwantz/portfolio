@@ -54,6 +54,8 @@
     }
 </script>
 
+<svelte:document onkeydown={onKeyDown} />
+
 <div
     class="carousel"
     role="region"
@@ -68,12 +70,14 @@
             >
                 {#each images as image, index}
                     <figure class="slide" aria-hidden={index !== activeIndex}>
-                        <img
-                            src={image.src}
-                            alt={image.alt}
-                            loading={index === 0 ? "eager" : "lazy"}
-                            decoding="async"
-                        />
+                        <div class="slide-media">
+                            <img
+                                src={image.src}
+                                alt={image.alt}
+                                loading={index === 0 ? "eager" : "lazy"}
+                                decoding="async"
+                            />
+                        </div>
                         <figcaption>{image.alt}</figcaption>
                     </figure>
                 {/each}
@@ -84,8 +88,7 @@
                     class="nav-button prev"
                     type="button"
                     onclick={previous}
-                    onkeydown={onKeyDown}
-                    aria-label="Previous screenshot"
+                    aria-label="Previous"
                 >
                     &#8249;
                 </button>
@@ -93,8 +96,7 @@
                     class="nav-button next"
                     type="button"
                     onclick={next}
-                    onkeydown={onKeyDown}
-                    aria-label="Next screenshot"
+                    aria-label="Next"
                 >
                     &#8250;
                 </button>
@@ -173,7 +175,11 @@
     .slide {
         width: calc(100% / var(--slide-count));
         margin: 0;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slide-media {
         aspect-ratio: 16 / 10;
         overflow: hidden;
         background:
@@ -189,27 +195,23 @@
             );
     }
 
-    .slide img {
+    .slide-media img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
         display: block;
     }
 
     figcaption {
-        position: absolute;
-        left: 0.75rem;
-        right: 0.75rem;
-        bottom: 0.75rem;
+        margin: 0;
         font-size: 0.72rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: oklch(from var(--color-cream) l c h / 0.88);
-        background: oklch(from var(--color-deep) l c h / 0.55);
-        border: 1px solid oklch(from var(--color-cream) l c h / 0.12);
-        padding: 0.38rem 0.6rem;
-        border-radius: 0.2rem;
-        backdrop-filter: blur(2px);
+        color: oklch(from var(--color-faded) l c h / 0.9);
+        background: oklch(from var(--color-deep) l c h / 0.35);
+        border-top: 1px solid oklch(from var(--color-cream) l c h / 0.1);
+        padding: 0.55rem 0.6rem 0.58rem;
     }
 
     .nav-button {
@@ -264,7 +266,11 @@
     .dots button {
         border: 1px solid oklch(from var(--color-cream) l c h / 0.18);
         border-radius: 999px;
-        padding: 0.28rem 0.55rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        padding: 0;
+        display: inline-grid;
+        place-items: center;
         background: oklch(from var(--color-deep) l c h / 0.45);
         color: var(--color-faded);
         font-size: 0.68rem;
@@ -288,6 +294,7 @@
     }
 
     .dot-index {
+        line-height: 1;
         font-variant-numeric: tabular-nums;
     }
 
