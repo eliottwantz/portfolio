@@ -1,0 +1,61 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    publishDate: string;
+    tags?: string[];
+}
+
+const { title, description, publishDate, tags = [] } = Astro.props;
+---
+
+<Layout title={`${title} — Eliott`} description={description}>
+    <article class="pt-28 sm:pt-34 pb-30 px-6">
+        <div class="max-w-4xl mx-auto">
+            <a
+                href="/projects"
+                class="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase text-muted hover:text-amber transition-colors"
+                data-reveal
+            >
+                <span aria-hidden="true">&#8592;</span>
+                Back to projects
+            </a>
+
+            <header
+                class="mt-8 border border-rule/80 bg-surface/35 rounded-sm p-6 sm:p-10"
+                data-reveal
+                data-delay="1"
+            >
+                <p class="text-xs tracking-[0.24em] uppercase text-faded">
+                    {publishDate}
+                </p>
+                <h1
+                    class="mt-3 font-display text-5xl sm:text-6xl md:text-7xl leading-none text-cream/95 font-light"
+                >
+                    {title}
+                </h1>
+                <p class="mt-6 text-[17px] text-muted leading-[1.9] max-w-3xl">
+                    {description}
+                </p>
+
+                {
+                    tags.length > 0 && (
+                        <div class="mt-7 flex flex-wrap gap-2.5">
+                            {tags.map((tag) => (
+                                <span class="text-[11px] tracking-[0.16em] uppercase text-amber/85 border border-amber/20 px-2.5 py-1 rounded-sm bg-amber/5">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )
+                }
+            </header>
+
+            <section class="project-rich mt-12" data-reveal data-delay="2">
+                <slot />
+            </section>
+        </div>
+    </article>
+</Layout>

@@ -199,3 +199,76 @@ body::after {
     0 0 100px rgba(200, 150, 60, 0.12),
     0 0 40px rgba(200, 150, 60, 0.16);
 }
+
+/* ── Project Detail Rich Content ─────────────────────── */
+
+.project-rich {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+  line-height: 1.95;
+}
+
+.project-rich > * + * {
+  margin-top: 1.05rem;
+}
+
+.project-rich strong {
+  color: oklch(from var(--color-cream) l c h / 0.92);
+  font-weight: 560;
+}
+
+.project-rich h2 {
+  margin-top: 2.9rem;
+  margin-bottom: 0.85rem;
+  color: oklch(from var(--color-cream) l c h / 0.95);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1.06;
+  font-weight: 340;
+  letter-spacing: 0.015em;
+}
+
+.project-rich h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.55rem;
+  color: oklch(from var(--color-cream) l c h / 0.9);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.2;
+  font-weight: 380;
+}
+
+.project-rich ul,
+.project-rich ol {
+  margin: 1rem 0 1.1rem;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-rich li {
+  padding-left: 0.28rem;
+}
+
+.project-rich p + ul,
+.project-rich p + ol {
+  margin-top: 0.5rem;
+}
+
+.project-rich a {
+  color: var(--color-amber);
+  text-decoration: none;
+  border-bottom: 1px solid oklch(from var(--color-amber) l c h / 0.35);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.project-rich a:hover {
+  color: oklch(from var(--color-amber) calc(l + 0.09) c h);
+  border-color: oklch(from var(--color-amber) calc(l + 0.09) c h / 0.65);
+}
+
+.project-carousel-shell {
+  margin: 2.3rem 0 2.7rem;
+}
