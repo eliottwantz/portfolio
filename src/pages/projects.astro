@@ -1,24 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-const projects = [
-    {
-        title: "NEM: Notre Education Moderne",
-        description:
-            "An online education platform that helps students learn topics and languages globally, while giving teachers full control over scheduling and class formats.",
-        tags: ["SvelteKit", "TypeScript", "Prisma", "Postgres", "Stripe", "Go"],
-        publishDate: "July 20 2023",
-        link: "/projects/nem-notre-education-moderne",
-    },
-    {
-        title: "Deadale",
-        description:
-            "An app that translates one ad video into multiple localized versions with customizable voices and accents to help teams scale global reach quickly.",
-        tags: ["Next.js", "TypeScript", "Postgres", "Stripe", "Go", "OpenAI"],
-        publishDate: "June 12 2023",
-        link: "/projects/deadale",
-    },
-];
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+});
+
+const projects = (await getCollection("projects"))
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    .map((project) => ({
+        ...project,
+        formattedPublishDate: dateFormatter.format(project.data.publishDate),
+    }));
 ---
 
 <Layout
@@ -48,7 +43,7 @@ const projects = [
             {
                 projects.map((project, i) => (
                     <a
-                        href={project.link}
+                        href={`/projects/${project.data.slug}`}
                         class="group relative block p-8 border border-rule rounded-sm bg-surface/40
                    hover:border-amber/20 hover:bg-elevated/50
                    transition-all duration-500
@@ -57,16 +52,16 @@ const projects = [
                         data-delay={String(i + 1)}
                     >
                         <h2 class="font-display text-2xl text-cream/90 group-hover:text-amber transition-colors duration-300 font-light">
-                            {project.title}
+                            {project.data.title}
                         </h2>
                         <p class="mt-3 text-xs tracking-[0.2em] uppercase text-faded">
-                            {project.publishDate}
+                            {project.formattedPublishDate}
                         </p>
                         <p class="mt-4 text-[16px] text-muted leading-[1.85]">
-                            {project.description}
+                            {project.data.description}
                         </p>
                         <div class="mt-6 flex flex-wrap gap-2">
-                            {project.tags.map((tag) => (
+                            {project.data.tags.map((tag) => (
                                 <span class="text-xs tracking-[0.18em] uppercase text-faded/80 border border-rule/50 px-2.5 py-1 rounded-sm">
                                     {tag}
                                 </span>

@@ -83,6 +83,16 @@ const ogImageUrl = new URL(
             <slot />
         </main>
 
+        <button
+            type="button"
+            class="back-to-top"
+            aria-label="Back to top"
+            data-back-to-top
+            hidden
+        >
+            <span aria-hidden="true">&#8593;</span>
+        </button>
+
         <!-- Footer -->
         <footer class="relative mt-32 pb-14">
             <div class="divider-shimmer max-w-xs mx-auto mb-10"></div>
@@ -108,6 +118,23 @@ const ogImageUrl = new URL(
                 { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
             );
             reveals.forEach((el) => observer.observe(el));
+
+            const backToTopButton = document.querySelector("[data-back-to-top]");
+
+            if (backToTopButton instanceof HTMLButtonElement) {
+                const toggleButton = () => {
+                    const isVisible = window.scrollY > 320;
+                    backToTopButton.classList.toggle("is-visible", isVisible);
+                    backToTopButton.hidden = !isVisible;
+                };
+
+                toggleButton();
+                window.addEventListener("scroll", toggleButton, { passive: true });
+
+                backToTopButton.addEventListener("click", () => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            }
         </script>
     </body>
 </html>
