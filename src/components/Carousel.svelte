@@ -177,6 +177,16 @@
             closeFullscreen();
         }
     }
+
+    function isVideoSource(src: string): boolean {
+        return /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
+    }
+
+    function getVideoMimeType(src: string): string {
+        if (/\.webm(\?.*)?$/i.test(src)) return "video/webm";
+        if (/\.ogg(\?.*)?$/i.test(src)) return "video/ogg";
+        return "video/mp4";
+    }
 </script>
 
 <svelte:document onkeydown={onKeyDown} />
@@ -208,12 +218,29 @@
                             data-slide-index={index}
                             aria-label={`Open ${image.alt} in fullscreen`}
                         >
-                            <img
-                                src={image.src}
-                                alt={image.alt}
-                                loading={index === 0 ? "eager" : "lazy"}
-                                decoding="async"
-                            />
+                            {#if isVideoSource(image.src)}
+                                <video
+                                    muted
+                                    autoplay
+                                    loop
+                                    playsinline
+                                    preload={index === activeIndex ? "metadata" : "none"}
+                                    aria-label={image.alt}
+                                >
+                                    <source
+                                        src={image.src}
+                                        type={getVideoMimeType(image.src)}
+                                    />
+                                    {image.alt}
+                                </video>
+                            {:else}
+                                <img
+                                    src={image.src}
+                                    alt={image.alt}
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    decoding="async"
+                                />
+                            {/if}
                         </button>
                         <figcaption>{image.alt}</figcaption>
                     </figure>
@@ -282,7 +309,17 @@
             <span aria-hidden="true">&#10005;</span>
         </button>
         <figure class="modal-figure">
-            <img src={modalImage.src} alt={modalImage.alt} />
+            {#if isVideoSource(modalImage.src)}
+                <video controls autoplay playsinline aria-label={modalImage.alt}>
+                    <source
+                        src={modalImage.src}
+                        type={getVideoMimeType(modalImage.src)}
+                    />
+                    {modalImage.alt}
+                </video>
+            {:else}
+                <img src={modalImage.src} alt={modalImage.alt} />
+            {/if}
             <figcaption>{modalImage.alt}</figcaption>
         </figure>
     {/if}
@@ -366,7 +403,8 @@
         outline-offset: -1px;
     }
 
-    .slide-media img {
+    .slide-media img,
+    .slide-media video {
         width: 100%;
         height: 100%;
         object-fit: contain;
@@ -412,7 +450,8 @@
         max-height: calc(100dvh - 1rem);
     }
 
-    .modal-figure img {
+    .modal-figure img,
+    .modal-figure video {
         width: 100%;
         flex: 1 1 auto;
         min-height: 0;
