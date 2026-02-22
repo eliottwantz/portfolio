@@ -22,6 +22,22 @@
   --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
 }
 
+/* ── Safe area + layers ───────────────────────────────── */
+
+:root {
+  --safe-area-top: env(safe-area-inset-top, 0px);
+}
+
+.site-nav {
+  padding-top: var(--safe-area-top);
+  z-index: 1000;
+  isolation: isolate;
+}
+
+.site-main {
+  padding-top: var(--safe-area-top);
+}
+
 /* ── Keyframes ─────────────────────────────────────────── */
 
 @keyframes fade-up {
@@ -82,6 +98,7 @@
 html {
   font-size: clamp(16.5px, 0.3vw + 15.6px, 18px);
   scroll-behavior: smooth;
+  background: var(--color-deep);
 }
 
 ::selection {
@@ -100,7 +117,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 40;
   pointer-events: none;
   opacity: 0.028;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -271,4 +288,10 @@ body::after {
 
 .project-carousel-shell {
   margin: 2.3rem 0 2.7rem;
+}
+
+@media (max-width: 640px) {
+  .project-carousel-shell {
+    margin: 1.4rem -1.5rem 1.8rem;
+  }
 }

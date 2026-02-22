@@ -14,11 +14,18 @@
 
     let activeIndex = $state(0);
     let totalSlides = $derived(images.length);
+    let fullscreenDialog: HTMLDialogElement | null = null;
+    let modalImageIndex = $state<number | null>(null);
+    let modalImage = $derived(
+        modalImageIndex === null ? null : (images[modalImageIndex] ?? null),
+    );
     let pointerStartX = 0;
     let pointerStartY = 0;
+    let pointerStartSlideIndex: number | null = null;
     let isPointerActive = false;
     const swipeThreshold = 48;
     const swipeAxisMultiplier = 1.2;
+    const tapThreshold = 12;
 
     $effect(() => {
         if (totalSlides === 0) {
@@ -48,6 +55,8 @@
     }
 
     function onKeyDown(event: KeyboardEvent) {
+        if (fullscreenDialog?.open) return;
+
         if (event.key === "ArrowRight") {
             event.preventDefault();
             next();
@@ -64,6 +73,21 @@
         pointerStartX = event.clientX;
         pointerStartY = event.clientY;
         isPointerActive = true;
+        pointerStartSlideIndex = null;
+
+        const target = event.target;
+        if (target instanceof Element) {
+            const slideTrigger = target.closest<HTMLElement>("[data-slide-index]");
+            if (slideTrigger) {
+                const rawIndex = Number.parseInt(
+                    slideTrigger.dataset.slideIndex ?? "",
+                    10,
+                );
+                pointerStartSlideIndex = Number.isNaN(rawIndex)
+                    ? null
+                    : rawIndex;
+            }
+        }
 
         if (event.currentTarget instanceof HTMLElement) {
             event.currentTarget.setPointerCapture(event.pointerId);
@@ -87,24 +111,60 @@
             Math.abs(deltaX) >= swipeThreshold &&
             Math.abs(deltaX) > Math.abs(deltaY) * swipeAxisMultiplier;
 
-        if (!isHorizontalSwipe) return;
+        if (!isHorizontalSwipe) {
+            const isTap =
+                Math.abs(deltaX) <= tapThreshold &&
+                Math.abs(deltaY) <= tapThreshold;
+
+            if (isTap && pointerStartSlideIndex !== null) {
+                openFullscreen(pointerStartSlideIndex);
+            }
+            pointerStartSlideIndex = null;
+            return;
+        }
 
         if (deltaX < 0) {
             next();
+            pointerStartSlideIndex = null;
             return;
         }
 
         previous();
+        pointerStartSlideIndex = null;
     }
 
     function onPointerCancel(event: PointerEvent) {
         isPointerActive = false;
+        pointerStartSlideIndex = null;
 
         if (
             event.currentTarget instanceof HTMLElement &&
             event.currentTarget.hasPointerCapture(event.pointerId)
         ) {
             event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+    }
+
+    function openFullscreen(index: number) {
+        if (totalSlides === 0) return;
+        modalImageIndex = wrapIndex(index);
+        if (!fullscreenDialog?.open) {
+            fullscreenDialog?.showModal();
+        }
+    }
+
+    function closeFullscreen() {
+        fullscreenDialog?.close();
+        modalImageIndex = null;
+    }
+
+    function onDialogClose() {
+        modalImageIndex = null;
+    }
+
+    function onDialogClick(event: MouseEvent) {
+        if (event.currentTarget === event.target) {
+            closeFullscreen();
         }
     }
 </script>
@@ -130,14 +190,20 @@
             >
                 {#each images as image, index}
                     <figure class="slide" aria-hidden={index !== activeIndex}>
-                        <div class="slide-media">
+                        <button
+                            type="button"
+                            class="slide-media"
+                            onclick={() => openFullscreen(index)}
+                            data-slide-index={index}
+                            aria-label={`Open ${image.alt} in fullscreen`}
+                        >
                             <img
                                 src={image.src}
                                 alt={image.alt}
                                 loading={index === 0 ? "eager" : "lazy"}
                                 decoding="async"
                             />
-                        </div>
+                        </button>
                         <figcaption>{image.alt}</figcaption>
                     </figure>
                 {/each}
@@ -185,6 +251,29 @@
         <p class="empty-state">No screenshots available yet.</p>
     {/if}
 </div>
+
+<dialog
+    class="carousel-modal"
+    bind:this={fullscreenDialog}
+    onclose={onDialogClose}
+    onclick={onDialogClick}
+    aria-label={modalImage?.alt ?? "Fullscreen image preview"}
+>
+    {#if modalImage}
+        <button
+            type="button"
+            class="modal-close"
+            onclick={closeFullscreen}
+            aria-label="Close fullscreen preview"
+        >
+            <span aria-hidden="true">&#10005;</span>
+        </button>
+        <figure class="modal-figure">
+            <img src={modalImage.src} alt={modalImage.alt} />
+            <figcaption>{modalImage.alt}</figcaption>
+        </figure>
+    {/if}
+</dialog>
 
 <style>
     .carousel {
@@ -239,6 +328,11 @@
     }
 
     .slide-media {
+        border: 0;
+        padding: 0;
+        width: 100%;
+        cursor: zoom-in;
+        display: block;
         aspect-ratio: 16 / 10;
         overflow: hidden;
         background:
@@ -254,12 +348,107 @@
             );
     }
 
+    .slide-media:focus-visible {
+        outline: 1px solid var(--color-amber);
+        outline-offset: -1px;
+    }
+
     .slide-media img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         object-position: center;
         display: block;
+    }
+
+    .carousel-modal {
+        width: min(100vw, 1200px);
+        max-width: calc(100vw - 1rem);
+        max-height: calc(100dvh - 1rem);
+        margin: auto;
+        border: 1px solid oklch(from var(--color-amber) l c h / 0.26);
+        border-radius: 0.32rem;
+        padding: 0;
+        overflow: hidden;
+        background:
+            linear-gradient(
+                135deg,
+                oklch(from var(--color-surface) l c h / 0.96),
+                oklch(from var(--color-deep) l c h / 0.96)
+            );
+        box-shadow:
+            0 40px 120px -50px rgba(0, 0, 0, 0.9),
+            inset 0 0 0 1px oklch(from var(--color-cream) l c h / 0.08);
+    }
+
+    .carousel-modal::backdrop {
+        background:
+            radial-gradient(
+                circle at 16% 18%,
+                oklch(from var(--color-amber) l c h / 0.22),
+                transparent 45%
+            ),
+            rgba(2, 4, 6, 0.85);
+        backdrop-filter: blur(6px);
+    }
+
+    .modal-figure {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        max-height: calc(100dvh - 1rem);
+    }
+
+    .modal-figure img {
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
+        object-fit: contain;
+        display: block;
+    }
+
+    .modal-figure figcaption {
+        font-size: 0.68rem;
+        line-height: 1.45;
+        letter-spacing: 0.03em;
+        text-transform: none;
+        overflow-wrap: anywhere;
+        white-space: normal;
+        color: var(--color-faded);
+        background: oklch(from var(--color-deep) l c h / 0.45);
+        border-top: 1px solid oklch(from var(--color-cream) l c h / 0.12);
+        padding: 0.7rem 0.9rem 0.72rem;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        z-index: 2;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid oklch(from var(--color-cream) l c h / 0.26);
+        border-radius: 999px;
+        background: oklch(from var(--color-deep) l c h / 0.7);
+        color: oklch(from var(--color-cream) l c h / 0.95);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition:
+            border-color 180ms ease,
+            background-color 180ms ease,
+            color 180ms ease;
+    }
+
+    .modal-close:hover {
+        border-color: oklch(from var(--color-amber) l c h / 0.5);
+        background: oklch(from var(--color-amber) l c h / 0.24);
+        color: var(--color-amber);
+    }
+
+    .modal-close:focus-visible {
+        outline: 1px solid var(--color-amber);
+        outline-offset: 2px;
     }
 
     figcaption {
@@ -418,6 +607,25 @@
         figcaption {
             font-size: 0.58rem;
             padding: 0.42rem 0.46rem 0.46rem;
+        }
+
+        .carousel-modal {
+            max-width: calc(100vw - 0.3rem);
+            max-height: calc(100dvh - 0.3rem);
+            border-radius: 0.22rem;
+        }
+
+        .modal-figure figcaption {
+            font-size: 0.56rem;
+            line-height: 1.35;
+            padding: 0.45rem 0.5rem 0.52rem;
+        }
+
+        .modal-close {
+            width: 1.7rem;
+            height: 1.7rem;
+            top: 0.35rem;
+            right: 0.35rem;
         }
     }
 </style>

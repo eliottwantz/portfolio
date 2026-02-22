@@ -24,7 +24,21 @@ const ogImageUrl = new URL(
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#0e0c0a" />
+        <meta
+            name="theme-color"
+            media="(prefers-color-scheme: light)"
+            content="#0e0c0a"
+        />
+        <meta
+            name="theme-color"
+            media="(prefers-color-scheme: dark)"
+            content="#0e0c0a"
+        />
         <meta name="description" content={description} />
         <meta name="generator" content={Astro.generator} />
         <meta property="og:type" content="website" />
@@ -65,7 +79,7 @@ const ogImageUrl = new URL(
 
         <Nav currentPath={currentPath} />
 
-        <main>
+        <main class="site-main">
             <slot />
         </main>
 
