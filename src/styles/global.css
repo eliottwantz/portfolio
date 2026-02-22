@@ -154,6 +154,12 @@ body::after {
 [data-reveal][data-delay="4"] {
   transition-delay: 400ms;
 }
+[data-reveal][data-delay="5"] {
+  transition-delay: 500ms;
+}
+[data-reveal][data-delay="6"] {
+  transition-delay: 600ms;
+}
 
 /* ── Shimmer divider (stream of time) ──────────────────── */
 
