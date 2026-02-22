@@ -1,45 +1,148 @@
 ---
-import { getCollection } from 'astro:content';
-import Button from '../components/Button.astro';
-import Hero from '../components/Hero.astro';
-import ProjectPreview from '../components/ProjectPreview.astro';
-import siteConfig from '../data/site-config';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { sortItemsByDateDesc } from '../utils/data-utils';
-
-// const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
-// const featuredPosts = posts.filter(({ data }) => data.isFeatured);
-
-const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
-const featuredProjects = projects.filter(({ data }) => data.isFeatured);
+import Layout from "../layouts/Layout.astro";
 ---
 
-<BaseLayout description={siteConfig.description} image={siteConfig.image}>
-    <Hero />
-    {
-        featuredProjects?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Projects</h2>
-                {featuredProjects.map((project) => (
-                    <ProjectPreview project={project} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/projects">View All Projects</Button>
-                </div>
+<Layout title="Eliott Wantz — Software Developer">
+    <!-- ═══ Hero ═══ -->
+    <section
+        class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-16"
+    >
+        <!-- Floating ghost words -->
+        <div
+            class="absolute inset-0 pointer-events-none overflow-hidden select-none hidden md:block"
+            aria-hidden="true"
+        >
+            <span
+                class="absolute top-[16%] left-[6%] font-display italic text-amber/8 text-8xl animate-float"
+                >irgendwie</span
+            >
+            <span
+                class="absolute top-[42%] right-[4%] font-display italic text-rose/10 text-7xl animate-float"
+                style="animation-delay: 2s;">irgendwo</span
+            >
+            <span
+                class="absolute bottom-[20%] left-[12%] font-display italic text-lavender/10 text-6xl animate-float"
+                style="animation-delay: 4s;">irgendwann</span
+            >
+        </div>
+
+        <div class="relative text-center max-w-3xl">
+            <p
+                class="font-body text-sm sm:text-base tracking-[0.35em] uppercase text-muted/80 mb-8 animate-fade-up"
+                style="animation-delay: 0.15s;"
+            >
+                Software Developer
+            </p>
+
+            <h1
+                class="font-display text-7xl sm:text-8xl md:text-9xl font-light tracking-tight text-cream text-glow-amber animate-fade-up"
+                style="animation-delay: 0.3s;"
+            >
+                Eliott Wantz
+            </h1>
+
+            <div class="mt-10 animate-fade-up" style="animation-delay: 0.5s;">
+                <p
+                    class="font-display italic text-lg sm:text-xl md:text-2xl text-muted font-light leading-relaxed"
+                >
+                    Building things that endure —<br />
+                    <span class="text-amber/70">
+                        somehow, somewhere, sometime
+                    </span>
+                </p>
             </div>
-        )
-    }
-    <!-- {
-        featuredPosts?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Writing</h2>
-                {featuredPosts.map((post) => (
-                    <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/blog">View All Posts</Button>
-                </div>
+
+            <div class="mt-20 animate-fade-up" style="animation-delay: 0.75s;">
+                <div class="divider-shimmer w-20 mx-auto"></div>
             </div>
-        )
-    } -->
-</BaseLayout>
+        </div>
+
+        <!-- Scroll hint -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in"
+            style="animation-delay: 1.4s;"
+            aria-hidden="true"
+        >
+            <div class="w-px h-14 bg-linear-to-b from-amber/30 to-transparent">
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ About ═══ -->
+    <section class="relative max-w-2xl mx-auto px-6 pt-12 pb-28">
+        <div data-reveal>
+            <h2
+                class="font-display text-3xl md:text-4xl font-light text-cream/90 mb-8"
+            >
+                Im Strom der Zeit
+            </h2>
+            <div
+                class="space-y-5 text-muted text-justify leading-[1.85] text-[17px]"
+            >
+                <p>
+                    I turn recurring problems into practical software people can
+                    actually use. I have vast knowledge across many languages,
+                    and I'm always learning new technologies. I strive to create
+                    applications that save time, reduce friction, and helps
+                    people in their daily lives. I aim to create long-lasting
+                    solutions that endure the test of time, and I&rsquo;m always
+                    on the lookout for new challenges and opportunities to grow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Navigation cards ═══ -->
+    <section class="max-w-4xl mx-auto px-6 pb-1">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <a
+                href="/work"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="1"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Work</span
+                >
+                <p
+                    class="mt-3 text-base text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Experience &amp; journey
+                </p>
+            </a>
+            <a
+                href="/projects"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="2"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Projects</span
+                >
+                <p
+                    class="mt-3 text-base text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Things I&rsquo;ve built
+                </p>
+            </a>
+            <a
+                href="/contact"
+                class="group block p-8 border border-rule rounded-sm bg-surface/50 hover:border-amber/20 hover:bg-elevated/50 transition-all duration-500"
+                data-reveal
+                data-delay="3"
+            >
+                <span
+                    class="font-display text-2xl text-cream/80 group-hover:text-amber transition-colors duration-300"
+                    >Contact</span
+                >
+                <p
+                    class="mt-3 text-base text-faded group-hover:text-muted transition-colors duration-300"
+                >
+                    Let&rsquo;s connect
+                </p>
+            </a>
+        </div>
+    </section>
+</Layout>

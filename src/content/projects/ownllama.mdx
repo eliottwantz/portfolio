@@ -1,29 +1,27 @@
 ---
-title: 'OwnLlama'
+title: "OwnLlama"
+slug: "ownllama"
 description: OwnLlama is your personal local AI assistant, leveraging Llama3 and Ollama. It allows simple chat and also RAG chat with your own documents.
-publishDate: 'September 1 2024'
+publishDate: "2024-09-01"
 isFeatured: true
-tags: ['AI', 'Sveltekit', 'TypeScript', 'Ollama', 'Python', 'Langchain', 'Tailwindcss']
+tags:
+  ["AI", "SvelteKit", "TypeScript", "Ollama", "Python", "Langchain", "Tailwind"]
 seo:
   image:
-    src: '/plock/readme.png'
-    alt: Project preview
+    src: "/plock/readme.png"
+    alt: "Project preview"
 ---
 
-import * as Card from '@/components/ui/card/index';
-import { Image } from 'astro:assets';
-import demoGif from '@/assets/ownllama/demo.gif';
+import Carousel from "@/components/Carousel.svelte";
 
 **Project Overview:**
 OwnLlama is your personal local AI assistant, leveraging any open source LLM from Ollama. It allows simple chat and also RAG chat with your own documents.
 
-<div class="flex flex-col justify-center mb-10">
-  <Card.Root>
-    <Card.Content class="overflow-hidden flex aspect-square items-center justify-center">
-      <Image src={demoGif} alt="Demo of OwnLlama" />
-    </Card.Content>
-    <small class="pl-6 text-sm text-muted-foreground">Demo of OwnLlama</small>
-  </Card.Root>
+<div class="project-carousel-shell">
+  <Carousel
+    client:load
+    images={[{ src: "/ownllama/demo.gif", alt: "Demo of OwnLlama" }]}
+  />
 </div>
 
 ## Objectives
@@ -64,6 +62,6 @@ Plock is self-contained and can be deployed in any environment supporting Docker
 
 I created this project to learn AI development using Large Language Models (LLMs). I first used the TypeScript LangChain library to keep everything in one language. It was all working well, but I decided to write the backend in Python to also use the Python library since it is mainly used in these LLMs/AI/ML apps nowadays.
 
-
 ## Links
+
 - [Github](https://github.com/eliottwantz/OwnLlama)
