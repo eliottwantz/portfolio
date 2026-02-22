@@ -6,12 +6,6 @@ import {
 } from "astro:content";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-});
-
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
 
