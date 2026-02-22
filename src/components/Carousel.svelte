@@ -279,7 +279,6 @@
                         aria-selected={index === activeIndex}
                         class={index === activeIndex ? "active" : ""}
                         onclick={() => goTo(index)}
-                        onkeydown={onKeyDown}
                     >
                         <span class="dot-index">{index + 1}</span>
                         <span class="sr-only">{image.alt}</span>
