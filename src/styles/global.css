@@ -133,8 +133,8 @@ body::after {
   opacity: 0;
   transform: translateY(20px);
   transition:
-    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 [data-reveal].revealed {
@@ -153,12 +153,6 @@ body::after {
 }
 [data-reveal][data-delay="4"] {
   transition-delay: 400ms;
-}
-[data-reveal][data-delay="5"] {
-  transition-delay: 500ms;
-}
-[data-reveal][data-delay="6"] {
-  transition-delay: 600ms;
 }
 
 /* ── Shimmer divider (stream of time) ──────────────────── */
