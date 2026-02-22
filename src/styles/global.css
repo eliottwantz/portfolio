@@ -15,8 +15,8 @@
   --color-rose: #b5696d;
   --color-lavender: #8a7db5;
 
-  --animate-fade-up: fade-up 0.8s ease-out both;
-  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
   --animate-shimmer: shimmer 4s ease-in-out infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
@@ -80,6 +80,7 @@
 /* ── Base ──────────────────────────────────────────────── */
 
 html {
+  font-size: clamp(16.5px, 0.3vw + 15.6px, 18px);
   scroll-behavior: smooth;
 }
 

@@ -24,7 +24,7 @@ function isActive(linkHref: string, path: string): boolean {
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <a
             href="/"
-            class="font-display text-xl tracking-wide text-cream/90 hover:text-amber transition-colors duration-300"
+            class="font-display text-2xl tracking-wide text-cream/90 hover:text-amber transition-colors duration-300"
         >
             Eliott Wantz
         </a>
@@ -35,7 +35,7 @@ function isActive(linkHref: string, path: string): boolean {
                     <a
                         href={link.href}
                         class:list={[
-                            "nav-link text-xs sm:text-sm font-body tracking-wider uppercase transition-colors duration-300",
+                            "nav-link text-sm sm:text-base font-body tracking-wider uppercase transition-colors duration-300",
                             isActive(link.href, currentPath)
                                 ? "text-amber active"
                                 : "text-muted hover:text-cream",
